@@ -11,7 +11,6 @@ const Posts = () => {
   const fetchPosts = useCallback(async () => {
     const posts = await request(FETCH_POSTS_URL, "GET", null);
     setPosts(posts);
-    console.log({ posts });
   }, [request]);
 
   useEffect(() => {

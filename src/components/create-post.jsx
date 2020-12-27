@@ -24,8 +24,7 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const a = await request(CREATE_POST_URL, "POST", { ...state });
-    console.log({ a });
+    await request(CREATE_POST_URL, "POST", { ...state });
 
     setState({
       email: "",
