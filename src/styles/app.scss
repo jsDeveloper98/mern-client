@@ -1,6 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
-@import "sign-up";
 
 .-active {
   color: white !important;
+}
+
+.form-container {
+  width: 100%;
+  height: calc(100vh - 56px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

@@ -66,7 +66,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="auth">
+    <div className="form-container">
       {getMessage() && (
         <Alert variant={getMessage().variant}>{getMessage().message}</Alert>
       )}

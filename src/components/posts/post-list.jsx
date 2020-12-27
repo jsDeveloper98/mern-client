@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
-import useHttp from "../hooks/http";
+import useHttp from "../../hooks/http";
+import PostCard from "./post-card";
 
 const FETCH_POSTS_URL = "http://localhost:5000/posts/";
 
-const Posts = () => {
+const PostList = () => {
   const [posts, setPosts] = useState([]);
   const { request } = useHttp();
 
@@ -20,17 +20,10 @@ const Posts = () => {
   return (
     <>
       {posts.map((post) => (
-        <Card key={post._id} style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={post.imgUrl} />
-          <Card.Body>
-            <Card.Title>{post.title}</Card.Title>
-            <Card.Text>{post.description}</Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
+        <PostCard key={post._id} post={post} />
       ))}
     </>
   );
 };
 
-export default Posts;
+export default PostList;
