@@ -18,15 +18,20 @@ const SignIn = () => {
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      clearSuccess();
-    }, 2000);
+    if (success) {
+      setTimeout(() => {
+        clearSuccess();
+      }, 2000);
+    }
   }, [success, clearSuccess]);
 
   useEffect(() => {
-    setTimeout(() => {
-      clearError();
-    }, 2000);
+    if (error) {
+      setTimeout(() => {
+        clearError();
+      }, 2000);
+    }
+   
   }, [error, clearError]);
 
   const handleChange = (e) => {

@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import { Alert } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import useHttp from "../../hooks/http";
 import PostForm from "./post-form";
 
 const CREATE_POST_URL = "http://localhost:5000/posts/create";
 
 const CreatePost = () => {
-  const { request } = useHttp();
+  const { request, error, success, clearError, clearSuccess } = useHttp();
   const [state, setState] = useState({
     imgUrl: "",
     title: "",
     description: "",
   });
+
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        clearSuccess();
+      }, 2000);
+    }
+  }, [success, clearSuccess]);
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        clearError();
+      }, 2000);
+    }
+  }, [error, clearError]);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -33,8 +50,28 @@ const CreatePost = () => {
     });
   };
 
+
+  const getMessage = () => {
+    if (error) {
+      return {
+        variant: "danger",
+        message: 'Post is not valid',
+      };
+    } else if (success) {
+      return {
+        variant: "success",
+        message: success,
+      };
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div className="form-container">
+      {getMessage() && (
+        <Alert variant={getMessage().variant}>{getMessage().message}</Alert>
+      )}
       <PostForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
