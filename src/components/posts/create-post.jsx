@@ -1,4 +1,3 @@
-import { Alert } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import useHttp from "../../hooks/http";
 import PostForm from "./post-form";
@@ -50,12 +49,11 @@ const CreatePost = () => {
     });
   };
 
-
   const getMessage = () => {
     if (error) {
       return {
         variant: "danger",
-        message: 'Post is not valid',
+        message: "Post is not valid",
       };
     } else if (success) {
       return {
@@ -69,15 +67,13 @@ const CreatePost = () => {
 
   return (
     <div className="form-container">
-      {getMessage() && (
-        <Alert variant={getMessage().variant}>{getMessage().message}</Alert>
-      )}
       <PostForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         imgUrl={state.imgUrl}
         title={state.title}
         description={state.description}
+        getMessage={getMessage}
       />
     </div>
   );

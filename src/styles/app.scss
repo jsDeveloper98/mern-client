@@ -1,7 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
+@import "./posts.scss";
 
-.-active {
+.-nav-active {
   color: white !important;
+}
+
+.-disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .form-container {

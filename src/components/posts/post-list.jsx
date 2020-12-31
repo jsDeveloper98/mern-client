@@ -15,14 +15,14 @@ const PostList = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, [request, fetchPosts]);
+  }, [fetchPosts]);
 
   return (
-    <>
+    <div className="post-list">
       {posts.map((post) => (
         <PostCard key={post._id} post={post} />
       ))}
-    </>
+    </div>
   );
 };
 

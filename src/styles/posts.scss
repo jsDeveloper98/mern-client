@@ -1,0 +1,30 @@
+.post-form {
+  display: flex;
+  align-items: center;
+
+  .post-card {
+    margin-right: 50px;
+  }
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px 0;
+
+  .post-card {
+    margin-bottom: 20px;
+
+    & > div {
+      height: 334.8px;
+
+      .card-title,
+      .card-text {
+        word-wrap: normal;
+        overflow: hidden;
+        height: 30px;
+      }
+    }
+  }
+}
