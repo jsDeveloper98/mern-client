@@ -9,7 +9,7 @@ const PostCard = ({ post, hideBtn, onload, setImgIsValid }) => {
           variant="top"
           src={post.imgUrl}
           onLoad={onload}
-          onError={() => setImgIsValid(false)}
+          onError={setImgIsValid ? () => setImgIsValid(false) : null}
         />
         <Card.Body>
           <Card.Title>{post.title}</Card.Title>
