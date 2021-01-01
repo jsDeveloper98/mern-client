@@ -1,10 +1,11 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import SignUp from "./components/sign-up";
-import SignIn from "./components/sign-in";
+import SignUp from "./components/auth/sign-up";
+import SignIn from "./components/auth/sign-in";
 import CreatePost from "./components/posts/create-post";
 import ErrPage from "./components/err-page";
 import PostList from "./components/posts/post-list";
+import PostDetails from "./components/posts/post-details";
 
 const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
@@ -14,8 +15,12 @@ const useRoutes = (isAuthenticated) => {
           <PostList />
         </Route>
 
-        <Route path="/posts">
+        <Route path="/posts" exact={true}>
           <PostList />
+        </Route>
+
+        <Route path="/posts/:id">
+          <PostDetails />
         </Route>
 
         <Route path="/createpost">

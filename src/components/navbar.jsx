@@ -22,14 +22,16 @@ const NavBar = () => {
           <Nav.Link
             as={Link}
             to="/posts"
-            className={pathname === "/posts" && "-nav-active"}
+            className={
+              (pathname === "/" || pathname.includes("/posts")) && "-nav-active"
+            }
           >
             Posts
           </Nav.Link>
           <Nav.Link
             as={Link}
             to="/createpost"
-            className={pathname === "/createpost" && "-nav-active"}
+            className={pathname.includes("/createpost") && "-nav-active"}
           >
             Create Post
           </Nav.Link>

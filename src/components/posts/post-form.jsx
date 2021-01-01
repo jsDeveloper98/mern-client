@@ -29,7 +29,7 @@ const PostForm = ({
         <Alert variant={getMessage().variant}>{getMessage().message}</Alert>
       );
     } else if (imgUrl && !imgIsValid) {
-      return <Alert variant={"danger"}>Image url is not valid</Alert>;
+      return <Alert variant={"danger"}>Image is not valid</Alert>;
     }
     return null;
   };

@@ -6,7 +6,7 @@ const useHttp = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const request = useCallback(async (url, method = "GET", body = {}) => {
+  const request = useCallback(async (url, method, body = {}) => {
     setLoading(true);
 
     if (!isEmpty(body)) {
