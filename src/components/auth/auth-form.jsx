@@ -3,11 +3,10 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../contexts/auth";
 import useHttp from "../../hooks/http";
+import { SIGN_IN_URL, SIGN_UP_URL } from "../../http-urls";
 
 const AuthForm = ({ signIn }) => {
-  const URL = signIn
-    ? "http://localhost:5000/auth/signin"
-    : "http://localhost:5000/auth/signup";
+  const URL = signIn ? SIGN_IN_URL : SIGN_UP_URL;
 
   const { request, error, success, clearError, clearSuccess } = useHttp();
   const { login } = useContext(AuthContext);

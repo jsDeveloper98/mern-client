@@ -5,25 +5,51 @@
   .post-card {
     margin-right: 50px;
   }
+
+  .dropdown {
+    &.input-group-prepend {
+      margin-bottom: 16px;
+
+      button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:after {
+          margin-top: 3px;
+        }
+      }
+    }
+  }
 }
 
-.post-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.post-list-container {
   padding: 30px 0;
 
-  .post-card {
-    margin-bottom: 20px;
+  .search-post {
+    width: 288px;
+    margin: 0 auto;
+  }
 
-    & > div {
-      height: 334.8px;
+  .post-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px 0;
 
-      .card-title,
-      .card-text {
-        word-wrap: normal;
-        overflow: hidden;
-        height: 30px;
+    .post-card {
+      margin-bottom: 20px;
+
+      & > div {
+        height: 334.8px;
+
+        .card-title,
+        .card-text {
+          word-wrap: normal;
+          overflow: hidden;
+          height: 30px;
+        }
       }
     }
   }

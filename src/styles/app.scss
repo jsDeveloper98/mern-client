@@ -17,4 +17,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  .err-page {
+    font-size: 20px;
+    color: darkred;
+    font-weight: bold;
+    text-align: center;
+  }
 }

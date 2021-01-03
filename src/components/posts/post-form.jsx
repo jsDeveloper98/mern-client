@@ -1,26 +1,43 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Alert,
+  InputGroup,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
+import { postCategories } from "../../services/post-service";
 import PostCard from "./post-card";
 
 const PostForm = ({
   handleChange,
   handleSubmit,
+  handleSelect,
   title,
   description,
   imgUrl,
+  category,
   getMessage,
 }) => {
   const [imgIsValid, setImgIsValid] = useState(false);
 
   const disabled = () => {
     return (
-      (!imgIsValid || !(title || "").trim() || !(description || "").trim()) &&
+      (!imgIsValid ||
+        !(title || "").trim() ||
+        !(description || "").trim() ||
+        !category) &&
       "-disabled"
     );
   };
 
   const onload = (e) => {
     setImgIsValid(e.target.offsetHeight <= 180);
+  };
+
+  const onerror = () => {
+    setImgIsValid(false);
   };
 
   const errorMessage = () => {
@@ -40,7 +57,7 @@ const PostForm = ({
         post={{ title, description, imgUrl }}
         hideBtn={true}
         onload={onload}
-        setImgIsValid={setImgIsValid}
+        onerror={onerror}
       />
 
       <Form>
@@ -78,6 +95,18 @@ const PostForm = ({
             autoComplete="off"
           />
         </Form.Group>
+
+        <DropdownButton
+          as={InputGroup.Prepend}
+          variant="outline-secondary"
+          title={category ? category : "choose category"}
+        >
+          {postCategories.map((category, i) => (
+            <Dropdown.Item onSelect={() => handleSelect(category)} key={i}>
+              {category}
+            </Dropdown.Item>
+          ))}
+        </DropdownButton>
 
         <Button
           variant="primary"

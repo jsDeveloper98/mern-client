@@ -4,8 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import useHttp from "../../hooks/http";
 import PostCard from "./post-card";
 import { ArrowLeft } from "react-bootstrap-icons";
-
-const FIND_POST_URL = "http://localhost:5000/posts/find";
+import { FIND_POST_URL } from "../../http-urls";
 
 const PostDetails = () => {
   const { request } = useHttp();

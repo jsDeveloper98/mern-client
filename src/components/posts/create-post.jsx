@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
+import useIsMounted from "react-is-mounted-hook";
 import useHttp from "../../hooks/http";
+import { CREATE_POST_URL } from "../../http-urls";
 import PostForm from "./post-form";
 
-const CREATE_POST_URL = "http://localhost:5000/posts/create";
-
 const CreatePost = () => {
+  const isMounted = useIsMounted();
   const { request, error, success, clearError, clearSuccess } = useHttp();
   const [state, setState] = useState({
     imgUrl: "",
     title: "",
     description: "",
+    category: null,
   });
 
   useEffect(() => {
@@ -39,14 +41,26 @@ const CreatePost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(isMounted());
 
     await request(CREATE_POST_URL, "POST", { ...state });
 
-    setState({
-      imgUrl: "",
-      title: "",
-      description: "",
-    });
+    setTimeout(() => {
+      console.log(isMounted());
+    }, 4000);
+
+    if (isMounted()) {
+      setState({
+        ...state,
+        imgUrl: "",
+        title: "",
+        description: "",
+      });
+    }
+  };
+
+  const handleSelect = (category) => {
+    setState({ ...state, category });
   };
 
   const getMessage = () => {
@@ -70,9 +84,11 @@ const CreatePost = () => {
       <PostForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        handleSelect={handleSelect}
         imgUrl={state.imgUrl}
         title={state.title}
         description={state.description}
+        category={state.category}
         getMessage={getMessage}
       />
     </div>
