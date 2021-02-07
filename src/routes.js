@@ -45,11 +45,11 @@ const useRoutes = (isAuthenticated) => {
   }
   return (
     <Switch>
-      <Route path="/signin">
+      <Route path="/signin" exact={true}>
         <SignIn />
       </Route>
 
-      <Route path="/signup">
+      <Route path="/signup" exact={true}>
         <SignUp />
       </Route>
     </Switch>

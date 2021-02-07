@@ -33,7 +33,7 @@ const PostForm = ({
   };
 
   const onload = (e) => {
-    setImgIsValid(e.target.offsetHeight <= 180);
+    setImgIsValid(true);
   };
 
   const onerror = () => {
@@ -99,7 +99,7 @@ const PostForm = ({
         <DropdownButton
           as={InputGroup.Prepend}
           variant="outline-secondary"
-          title={category ? category : "choose category"}
+          title={category ? category : "Choose Category"}
         >
           {postCategories.map((category, i) => (
             <Dropdown.Item onSelect={() => handleSelect(category)} key={i}>

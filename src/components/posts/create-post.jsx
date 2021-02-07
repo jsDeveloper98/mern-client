@@ -41,13 +41,8 @@ const CreatePost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(isMounted());
 
     await request(CREATE_POST_URL, "POST", { ...state });
-
-    setTimeout(() => {
-      console.log(isMounted());
-    }, 4000);
 
     if (isMounted()) {
       setState({

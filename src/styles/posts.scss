@@ -1,3 +1,17 @@
+.dropdown {
+  &.input-group-prepend {
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:after {
+        margin-top: 3px;
+      }
+    }
+  }
+}
+
 .post-form {
   display: flex;
   align-items: center;
@@ -12,13 +26,6 @@
 
       button {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &:after {
-          margin-top: 3px;
-        }
       }
     }
   }
@@ -27,9 +34,27 @@
 .post-list-container {
   padding: 30px 0;
 
-  .search-post {
-    width: 288px;
-    margin: 0 auto;
+  .no-post {
+    height: calc(100vh - 124px) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .post-filters-wrapper {
+    display: flex;
+    position: relative;
+
+    .search-posts {
+      width: 288px;
+      margin: 0 auto;
+    }
+
+    .input-group-prepend {
+      position: absolute;
+      right: 42px;
+    }
   }
 
   .post-list {
@@ -42,8 +67,6 @@
       margin-bottom: 20px;
 
       & > div {
-        height: 334.8px;
-
         .card-title,
         .card-text {
           word-wrap: normal;
