@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Like from "../svg/like";
 
 const PostCard = ({ post, hideBtn, onload, onerror }) => {
   return (
@@ -17,6 +18,11 @@ const PostCard = ({ post, hideBtn, onload, onerror }) => {
             <Card.Body>
               <Card.Title>{post.title}</Card.Title>
               <Card.Text>{post.description}</Card.Text>
+
+              <div className="like-btn">
+                <Like />
+              </div>
+
               {!hideBtn && (
                 <Link to={"/posts/" + post._id}>
                   <Button variant="primary">Open Post</Button>

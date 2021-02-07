@@ -65,6 +65,7 @@
 
     .post-card {
       margin-bottom: 20px;
+      position: relative;
 
       & > div {
         .card-title,
@@ -75,6 +76,15 @@
         }
       }
     }
+  }
+}
+
+.like-btn {
+  label {
+    width: 50px;
+    position: absolute;
+    right: 30px;
+    bottom: 7px;
   }
 }
 
